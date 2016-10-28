@@ -39,6 +39,7 @@ data](../../how_tos/reading_data/index.md).
 @@WholeFileReader
 @@IdentityReader
 @@TFRecordReader
+@@LMDBRecordReader
 @@FixedLengthRecordReader
 
 ## Converting
@@ -485,6 +486,25 @@ class TFRecordReader(ReaderBase):
 ops.NotDifferentiable("TFRecordReader")
 
 
+class LMDBRecordReader(ReaderBase):
+  """A Reader that outputs the records from a LMDB file.
+
+  See ReaderBase for supported methods.
+  """
+  def __init__(self, name=None, options=None):
+    """Create a LMDBRecordReader.
+
+    Args:
+      name: A name for the operation (optional).
+      options: A LMDBRecordOptions object (optional).
+    """
+    rr = gen_io_ops._lmdb_record_reader(name=name)
+    super(LMDBRecordReader, self).__init__(rr)
+
+
+ops.NotDifferentiable("LMDBRecordReader")
+
+
 class IdentityReader(ReaderBase):
   """A Reader that outputs the queued work as both the key and value.
 
@@ -512,6 +532,7 @@ ops.RegisterShape("IdentityReader")(common_shapes.call_cpp_shape_fn)
 ops.RegisterShape("TextLineReader")(common_shapes.call_cpp_shape_fn)
 ops.RegisterShape("WholeFileReader")(common_shapes.call_cpp_shape_fn)
 ops.RegisterShape("TFRecordReader")(common_shapes.call_cpp_shape_fn)
+ops.RegisterShape("LMDBRecordReader")(common_shapes.call_cpp_shape_fn)
 ops.RegisterShape("ReaderNumRecordsProduced")(common_shapes.call_cpp_shape_fn)
 ops.RegisterShape("ReaderNumWorkUnitsCompleted")(
     common_shapes.call_cpp_shape_fn)

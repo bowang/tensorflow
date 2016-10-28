@@ -183,6 +183,19 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
   )
 
   native.new_http_archive(
+    name = "lmdb_git",
+    url = "https://github.com/LMDB/lmdb/archive/LMDB_0.9.18.tar.gz",
+    sha256 = "dd35b471d6eea84f48f2feece13d121abf59ef255308b8624a36223ffbdf9989",
+    strip_prefix = "lmdb-LMDB_0.9.18",
+    build_file = str(Label("//:lmdb.BUILD")),
+  )
+
+  native.bind(
+    name = "lmdb",
+    actual = "@lmdb_git//:lmdb",
+  )
+
+  native.new_http_archive(
     name = "jsoncpp_git",
     url = "http://github.com/open-source-parsers/jsoncpp/archive/11086dd6a7eba04289944367ca82cea71299ed70.tar.gz",
     sha256 = "07d34db40593d257324ec5fb9debc4dc33f29f8fb44e33a2eeb35503e61d0fe2",

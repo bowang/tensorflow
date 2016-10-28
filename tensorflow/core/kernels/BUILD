@@ -1179,6 +1179,7 @@ tf_kernel_libraries(
         "save_restore_v2_ops",
         "text_line_reader_op",
         "tf_record_reader_op",
+        "lmdb_record_reader_op",
         "whole_file_read_ops",
     ],
     deps = [
@@ -1192,6 +1193,7 @@ tf_kernel_libraries(
         "//tensorflow/core:lib_internal",
         "//tensorflow/core:protos_all_cc",
         "//tensorflow/core/util/tensor_bundle",
+        "//external:lmdb",
     ],
 )
 
@@ -2478,6 +2480,7 @@ filegroup(
             # not used on Android. Those ops also do not compile if included,
             # unless we add the additional deps they need.
             "tf_record_reader_op.*",
+            "lmdb_record_reader_op.*",
             "string_to_hash_bucket_op.*",
             "sdca_ops.*",
             "text_line_reader_op.*",
