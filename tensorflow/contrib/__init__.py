@@ -35,6 +35,7 @@ from tensorflow.contrib import lookup
 from tensorflow.contrib import losses
 from tensorflow.contrib import metrics
 from tensorflow.contrib import opt
+from tensorflow.contrib import proto
 from tensorflow.contrib import quantization
 from tensorflow.contrib import rnn
 from tensorflow.contrib import seq2seq

@@ -31,6 +31,7 @@ py_library(
         "//tensorflow/contrib/metrics:metrics_py",
         "//tensorflow/contrib/ndlstm",
         "//tensorflow/contrib/opt:opt_py",
+        "//tensorflow/contrib/proto:proto_ops_py",
         "//tensorflow/contrib/quantization:quantization_py",
         "//tensorflow/contrib/rnn:rnn_py",
         "//tensorflow/contrib/seq2seq:seq2seq_py",
